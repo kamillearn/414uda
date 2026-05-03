@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>414 Urban Dance Academy | Neuss</title>
+    <style>
+        /* --- CSS STYLES --- */
+        :root {
+            --bg-dark: #121212;
+            --text-light: #f5f5f5;
+            --accent: #ff4b2b; /* Modernes, urbanes Rot/Orange */
+            --accent-hover: #e03a1d;
+            --card-bg: #1e1e1e;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        h1, h2, h3 {
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        /* Container & Sections */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        section {
+            padding: 80px 20px;
+            border-bottom: 1px solid #333;
+        }
+
+        /* Header / Nav */
+        header {
+            background-color: rgba(18, 18, 18, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            border-bottom: 1px solid #333;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        nav a {
+            margin-left: 20px;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: #fff;
+            padding: 15px 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 5px;
+            transition: background 0.3s;
+            border: 2px solid var(--accent);
+            cursor: pointer;
+            margin: 10px 10px 10px 0;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+            border-color: var(--accent-hover);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--accent);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--accent);
+            color: #fff;
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            border-color: #25D366;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #1ebe57;
+            border-color: #1ebe57;
+        }
+
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0 10%;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1535525153412-5a42439a610d?auto=format&fit=crop&w=1920&q=80') center/cover;
+        }
+
+        #hero h1 {
+            font-size: 4rem;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        #hero h2 {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 30px;
+            max-width: 800px;
+        }
+
+        /* Cards Grid (Kurse, Preise, Community) */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #333;
+        }
+
+        /* Stundenplan */
+        .schedule-day {
+            background-color: var(--card-bg);
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 5px solid var(--accent);
+        }
+
+        .schedule-day h3 {
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+
+        .schedule-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #333;
+        }
+
+        .schedule-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Video Placeholders */
+        .video-box {
+            background-color: #333;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            color: #888;
+        }
+
+        /* Formular */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--card-bg);
+            border: 1px solid #444;
+            color: #fff;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        
+        .footer-grid h4 {
+            color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="logo">414 UDA</div>
+        <nav>
+            <a href="#about">Über uns</a>
+            <a href="#kurse">Kurse</a>
+            <a href="#stundenplan">Stundenplan</a>
+            <a href="#preise">Preise</a>
+            <a href="#community">Community</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <h1>Werde Teil der Bewegung.</h1>
+        <h2>Tanzen. Entwickeln. Wachsen. Willkommen bei der 414 Urban Dance Academy in Neuss.</h2>
+        <div>
+            <a href="#probetraining" class="btn">Jetzt Probetraining sichern</a>
+            <a href="#stundenplan" class="btn btn-outline">Stundenplan ansehen</a>
+        </div>
+    </section>
+
+    <!-- Mehr als nur Tanz -->
+    <section id="about" class="container">
+        <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+            <h2>Mehr als nur Tanz</h2>
+            <p style="font-size: 1.2rem; color: #ccc;">Bei uns geht es nicht nur um Schritte - sondern um Ausdruck, Selbstbewusstsein und Community.</p>
+        </div>
+    </section>
+
+    <!-- Kurse Übersicht -->
+    <section id="kurse">
+        <div class="container">
+            <h2 style="text-align: center;">Unsere Kurse</h2>
+            <div class="grid">
+                <div class="card"><h3>Hip-Hop Minis</h3><p>Alter: 5-7 Jahre</p></div>
+                <div class="card"><h3>Hip-Hop Kids</h3><p>Alter: 7-9 Jahre</p></div>
+                <div class="card"><h3>Hip-Hop Juniors</h3><p>Alter: 10-12 Jahre</p></div>
+                <div class="card"><h3>Hip-Hop Teens</h3><p>Alter: 13-15 Jahre</p></div>
+                <div class="card"><h3>Hip-Hop Anfänger</h3><p>Ab 16 Jahren</p></div>
+                <div class="card"><h3>Afterwork</h3><p>Erwachsene</p></div>
+                <div class="card"><h3>Urban Mix</h3><p>All Styles</p></div>
+                <div class="card"><h3>Afro</h3><p>Good Vibes</p></div>
+                <div class="card"><h3>House</h3><p>Footwork & Groove</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stundenplan -->
+    <section id="stundenplan" style="background-color: #0a0a0a;">
+        <div class="container">
+            <h2 style="text-align: center;">Stundenplan</h2>
+            
+            <div class="schedule-day">
+                <h3>Dienstag <span style="font-size: 0.9rem; color: #888; font-weight: normal;">(Salzstraße 55, 41460 Neuss)</span></h3>
+                <div class="schedule-item"><span>16:00 - 17:00</span><span>Duo Training</span></div>
+                <div class="schedule-item"><span>17:00 - 18:00</span><span>Hip-Hop Minis (5-7)</span></div>
+                <div class="schedule-item"><span>18:00 - 19:00</span><span>Urban Mix</span></div>
+                <div class="schedule-item"><span>19:00 - 20:00</span><span>Hip-Hop Anfänger (ab 16)</span></div>
+                <div class="schedule-item"><span>20:00 - 21:00</span><span>Afro</span></div>
+            </div>
+
+            <div class="schedule-day">
+                <h3>Mittwoch <span style="font-size: 0.9rem; color: #888; font-weight: normal;">(Welderstr. 42, 41469 Neuss)</span></h3>
+                <div class="schedule-item"><span>16:00 - 17:00</span><span>Hip-Hop Minis (5-7)</span></div>
+                <div class="schedule-item"><span>17:15 - 18:15</span><span>Hip-Hop Kids (7-9)</span></div>
+                <div class="schedule-item"><span>18:30 - 19:30</span><span>Afterwork (Erwachsene)</span></div>
+            </div>
+
+            <div class="schedule-day">
+                <h3>Donnerstag <span style="font-size: 0.9rem; color: #888; font-weight: normal;">(Welderstr. 42, 41469 Neuss)</span></h3>
+                <div class="schedule-item"><span>16:00 - 17:00</span><span>Hip-Hop Juniors (10-12)</span></div>
+            </div>
+
+            <div class="schedule-day">
+                <h3>Freitag <span style="font-size: 0.9rem; color: #888; font-weight: normal;">(Salzstraße 55, 41460 Neuss)</span></h3>
+                <div class="schedule-item"><span>18:00 - 19:00</span><span>Hip-Hop Teens (13-15)</span></div>
+                <div class="schedule-item"><span>19:00 - 20:00</span><span>House</span></div>
+                <div class="schedule-item"><span>20:00 - 21:00</span><span>Freestyle Session</span></div>
+            </div>
+
+            <div class="schedule-day">
+                <h3>Samstag <span style="font-size: 0.9rem; color: #888; font-weight: normal;">(Salzstraße 55 - Meisterschaft)</span></h3>
+                <div class="schedule-item"><span>09:00 - 10:30</span><span>Duo Training</span></div>
+                <div class="schedule-item"><span>09:00 - 11:00</span><span>Junior Team</span></div>
+                <div class="schedule-item"><span>11:00 - 14:00</span><span>Adults Team</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Preise -->
+    <section id="preise">
+        <div class="container">
+            <h2 style="text-align: center;">Preise</h2>
+            <p style="text-align: center; margin-bottom: 30px; font-size: 1.2rem;">Starte ab 34,90 € / Monat</p>
+            <div class="grid">
+                <div class="card">
+                    <h3>1 Kurs</h3>
+                    <div style="font-size: 2.5rem; color: var(--accent); font-weight: bold;">34,90 €</div>
+                    <p>pro Monat</p>
+                </div>
+                <div class="card">
+                    <h3>2 Kurse</h3>
+                    <div style="font-size: 2.5rem; color: var(--accent); font-weight: bold;">54,90 €</div>
+                    <p>pro Monat</p>
+                </div>
+                <div class="card">
+                    <h3>3 Kurse</h3>
+                    <div style="font-size: 2.5rem; color: var(--accent); font-weight: bold;">69,90 €</div>
+                    <p>pro Monat</p>
+                </div>
+                <div class="card" style="border: 2px solid var(--accent);">
+                    <h3>Flatrate</h3>
+                    <div style="font-size: 2.5rem; color: var(--accent); font-weight: bold;">79,90 €</div>
+                    <p>pro Monat</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community -->
+    <section id="community" style="background-color: #0a0a0a;">
+        <div class="container">
+            <h2 style="text-align: center;">Unsere Community</h2>
+            <div class="grid">
+                <div class="video-box">
+                    <span>[Video-Platzhalter]</span>
+                    <p>Wie bist du zu 414 gekommen?</p>
+                </div>
+                <div class="video-box">
+                    <span>[Video-Platzhalter]</span>
+                    <p>Was gefällt dir hier?</p>
+                </div>
+                <div class="video-box">
+                    <span>[Video-Platzhalter]</span>
+                    <p>Warum bleibst du?</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="#" class="btn btn-outline">Alle Community Videos ansehen</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Probetraining -->
+    <section id="probetraining">
+        <div class="container">
+            <h2 style="text-align: center;">Probetraining</h2>
+            <p style="text-align: center; margin-bottom: 40px; font-size: 1.2rem;">Finde den passenden Kurs - ohne Druck.</p>
+            
+            <form action="#" method="POST">
+                <input type="text" name="name" placeholder="Dein Name" required>
+                <input type="email" name="email" placeholder="Deine E-Mail Adresse" required>
+                <input type="number" name="alter" placeholder="Dein Alter" required>
+                <select name="kurs">
+                    <option value="" disabled selected>Wähle einen Kurs...</option>
+                    <option value="minis">Hip-Hop Minis (5-7)</option>
+                    <option value="kids">Kids (7-9)</option>
+                    <option value="juniors">Juniors (10-12)</option>
+                    <option value="teens">Teens (13-15)</option>
+                    <option value="anfaenger">Anfänger (16+)</option>
+                    <option value="afterwork">Afterwork</option>
+                    <option value="urban">Urban Mix</option>
+                    <option value="afro">Afro</option>
+                    <option value="house">House</option>
+                </select>
+                <textarea name="nachricht" rows="4" placeholder="Deine Nachricht an uns (optional)"></textarea>
+                <button type="submit" class="btn" style="width: 100%;">Jetzt Platz sichern</button>
+            </form>
+
+            <div style="text-align: center; margin-top: 40px;">
+                <p style="margin-bottom: 15px;">Oder schreib uns direkt:</p>
+                <a href="https://wa.me/491789737619" target="_blank" class="btn btn-whatsapp">Per WhatsApp schreiben</a>
+            </div>
+            
+            <!-- Video unter Formular wie im Konzept gefordert -->
+            <div class="grid" style="margin-top: 50px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                <div class="video-box">
+                    <span>[Video-Platzhalter: Community Eindruck]</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer & Kontakt -->
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <h4>414 UDA</h4>
+                <p>Werde Teil der Bewegung.</p>
+                <p>Domain: <a href="http://www.414uda.de">www.414uda.de</a></p>
+            </div>
+            <div>
+                <h4>Kontakt</h4>
+                <p>WhatsApp: 0178 973 76 19</p>
+                <p>E-Mail: <a href="mailto:info@414uda.de">info@414uda.de</a></p>
+                <p>Instagram: <a href="https://instagram.com/414UDA" target="_blank">@414UDA</a></p>
+            </div>
+            <div>
+                <h4>Standorte</h4>
+                <p>Salzstraße 55, 41460 Neuss</p>
+                <p>Welderstr. 42, 41469 Neuss</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
