@@ -2,8 +2,13 @@
 <html lang="de">
 
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;800&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="414 Urban Dance Academy Neuss – Dein Tanzstudio für Hip-Hop, House und Urban Dance. Profitiere von 300+ Mitgliedern und top trainierten Coaches. Buche jetzt dein Probetraining!">
     <title>414 Urban Dance Academy | Neuss</title>
     <style>
         :root {
@@ -14,20 +19,32 @@
             --card-bg: #1e1e1e;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif; /* Changed here */
+}
 
-        body {
+p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #bbb;
+    margin-bottom: 20px;
+}
+
+#hero {
+    background: linear-gradient(135deg, rgba(0,0,0,0.8) 60%, rgba(26,12,8,0.95) 100%), url('images/1.png') center/cover no-repeat;
+    background-attachment: fixed; /* This creates a premium "depth" feel */
+}
+
+body {
             background-color: var(--bg-dark);
             background-image: linear-gradient(135deg, #121212 60%, #1a0c08 100%);
             background-attachment: fixed;
             color: var(--text-light);
             line-height: 1.6;
-            overflow-x: hidden; /* Verhindert seitliches Scrollen global */
+            overflow-x: hidden;
         }
 
         a {
@@ -169,8 +186,15 @@
         }
 
         @keyframes kickerPulse {
-            0%, 100% { opacity: 1 }
-            50% { opacity: 0.3 }
+
+            0%,
+            100% {
+                opacity: 1
+            }
+
+            50% {
+                opacity: 0.3
+            }
         }
 
         /* ── HERO ── */
@@ -235,17 +259,21 @@
         /* ── IMAGE PLACEHOLDERS ── */
         .img-placeholder {
             background-color: #1a1a1a;
-            border: 2px dashed #2e2e2e;
-            border-radius: 8px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: #555;
-            text-align: center;
-            padding: 10px;
-            overflow: hidden;
+            background-image: linear-gradient(45deg, #1a1a1a 25%, #222 50%, #1a1a1a 75%);
+            background-size: 200% 200%;
+            animation: loading 2s infinite;
+            border: none;
             position: relative;
+        }
+
+        @keyframes loading {
+            0% {
+                background-position: 200% 0;
+            }
+
+            100% {
+                background-position: -200% 0;
+            }
         }
 
         .img-placeholder .ph-icon {
@@ -276,20 +304,71 @@
             border-radius: 6px;
         }
 
-        /* ── CARDS ── */
-        .grid {
+        /* ── KURSE GRID (Zweispaltig für PC & Mobile) ── */
+        .kurse-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
             margin-top: 30px;
         }
 
+        /* ── ALLGEMEINE CARDS ── */
         .card {
             background-color: var(--card-bg);
             padding: 30px;
             border-radius: 8px;
             text-align: center;
             border: 1px solid #333;
+        }
+
+        /* ── PREIS-LISTE (TABELLEN-STYLE) ── */
+        .price-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--card-bg);
+            padding: 20px 30px;
+            border-radius: 8px;
+            border: 1px solid #333;
+            transition: transform 0.2s;
+        }
+
+        .price-row:hover {
+            transform: scale(1.02);
+        }
+
+        .price-row.highlight {
+            border: 2px solid var(--accent);
+            box-shadow: 0 4px 15px rgba(255, 75, 43, 0.1);
+        }
+
+        .price-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .price-amount {
+            font-size: 1.5rem;
+            color: var(--accent);
+            font-weight: bold;
+            text-align: right;
+            line-height: 1.1;
+        }
+
+        .price-freq {
+            font-size: 0.8rem;
+            color: #888;
+            text-transform: uppercase;
+            text-align: right;
+            margin-top: 4px;
         }
 
         /* ── ABOUT ── */
@@ -351,18 +430,6 @@
             grid-column: span 2;
         }
 
-        /* ── COMMUNITY PHOTOS ── */
-        .photo-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            margin-top: 30px;
-        }
-
-        .photo-grid .img-placeholder {
-            height: 220px;
-        }
-
         /* ── TESTIMONY VIDEOS ── */
         .video-grid {
             display: grid;
@@ -379,11 +446,11 @@
             width: 100%;
         }
 
-        .video-embed { 
-            position: relative; 
-            padding-bottom: 177.77%; /* Format für Hochkant-Videos (9:16) */
-            height: 0; 
-            overflow: hidden; 
+        .video-embed {
+            position: relative;
+            padding-bottom: 177.77%;
+            height: 0;
+            overflow: hidden;
             background-color: #000;
         }
 
@@ -435,7 +502,6 @@
             font-size: 1rem;
         }
 
-        /* Überschreibt die fehlerhafte Breite von Instagram auf kleinen Handys */
         .instagram-media {
             min-width: 250px !important;
             max-width: 100% !important;
@@ -611,7 +677,7 @@
             margin-bottom: 10px;
         }
 
-        /* ── SWIPE CONTAINER (FÜR KURSE, STUNDENPLAN, VIDEOS, PREISE) ── */
+        /* ── SWIPE CONTAINER (FÜR STUNDENPLAN, VIDEOS) ── */
         .swipe-container {
             display: flex;
             overflow-x: auto;
@@ -626,12 +692,6 @@
             display: none;
         }
 
-        .swipe-container .card {
-            min-width: 280px;
-            flex-shrink: 0;
-            scroll-snap-align: center;
-        }
-
         .swipe-container .schedule-day {
             min-width: 320px;
             flex-shrink: 0;
@@ -640,13 +700,82 @@
         }
 
         .swipe-container .video-card {
-            min-width: 220px; /* Smarte Breite für Hochkant-Videos */
+            min-width: 220px;
             flex-shrink: 0;
             scroll-snap-align: center;
         }
 
-        /* ── RESPONSIVE / MOBILE MENU ── */
+        .map-container {
+            position: relative;
+            width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            /* Keeps the rounded corners */
+            border: 1px solid #333;
+        }
+
+        .map-container iframe {
+            display: block;
+            width: 100%;
+        }
+
+        .map-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
         @media (max-width: 768px) {
+            .map-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .location-header {
+            text-align: center;
+            color: var(--accent);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent);
+            display: inline-block;
+            width: 100%;
+        }
+
+        /* Optional: Add a subtle background color difference to the containers */
+        .swipe-container {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        /* ── RESPONSIVE / MOBILE MENU & SPACING ── */
+        @media (max-width: 768px) {
+
+            /* 1. Abstände massiv verkleinern, um die "schwarzen Löcher" zu schließen */
+            section {
+                padding: 30px 15px;
+                /* Von 80px auf 30px reduziert */
+            }
+
+            .container {
+                padding: 20px 5px;
+                /* Container-Padding optimiert */
+            }
+
+            h2 {
+                margin-bottom: 15px;
+                /* Überschriften-Abstand verringert */
+            }
+
+            /* Rest des CSS bleibt so, hier sind die wichtigsten Korrekturen: */
+            #hero {
+                height: auto;
+                min-height: 100vh;
+                padding-top: 100px;
+                padding-bottom: 40px;
+                justify-content: flex-start;
+            }
+
             #hero h1 {
                 font-size: 2.5rem;
             }
@@ -654,35 +783,41 @@
             .about-layout,
             .probetraining-layout {
                 grid-template-columns: 1fr;
+                gap: 20px;
             }
 
             .gallery-grid {
                 grid-template-columns: 1fr 1fr;
+                gap: 8px;
             }
 
-            .gallery-grid .img-placeholder.wide {
-                grid-column: span 2;
+            .kurse-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
             }
 
-            /* Fix für die Stats-Bar (Verhindert Quetschen) */
+            .kurse-grid .card {
+                padding: 15px;
+            }
+
+            /* Stats-Bar Fix für 2x2 Raster */
             #stats-bar {
                 flex-wrap: wrap;
             }
 
             .stat-item {
-                flex: 1 1 50%; /* Erzeugt ein 2x2 Raster auf dem Handy */
+                flex: 1 1 50%;
                 border-bottom: 1px solid #222;
-                padding: 20px 10px;
+                padding: 15px 5px;
             }
 
             .stat-item:nth-child(even) {
                 border-right: none;
             }
 
+            /* Header */
             header {
                 padding: 15px 20px;
-                justify-content: flex-start;
-                gap: 20px;
             }
 
             .desktop-nav {
@@ -699,6 +834,7 @@
                 padding-right: 35px;
             }
 
+            /* Mobile Menu */
             .mobile-nav {
                 display: flex;
                 flex-direction: column;
@@ -711,60 +847,26 @@
                 z-index: 3001;
                 transition: left 0.3s ease;
                 padding: 70px 20px 20px;
-                border-right: 1px solid #333;
-                box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
             }
 
             .mobile-nav.open {
                 left: 0;
             }
 
-            .mobile-nav a {
-                padding: 15px 0;
-                border-bottom: 1px solid #222;
-                font-size: 1.1rem;
-                font-weight: 600;
+            .swipe-container {
+                margin-left: -15px;
+                margin-right: -15px;
+                padding-left: 15px;
+                padding-right: 15px;
             }
 
-            .mobile-nav a:last-child {
-                border-bottom: none;
-            }
-
-            .close-mobile-menu {
-                position: absolute;
-                top: 15px;
-                right: 20px;
-                background: none;
-                border: none;
-                color: #888;
-                font-size: 2rem;
-                cursor: pointer;
-            }
-
-            .mobile-overlay-bg {
-                display: block;
-                position: fixed;
-                inset: 0;
-                background: rgba(0, 0, 0, 0.7);
-                z-index: 3000;
-                opacity: 0;
-                pointer-events: none;
-                transition: opacity 0.3s ease;
-            }
-
-            .mobile-overlay-bg.open {
-                opacity: 1;
-                pointer-events: auto;
-            }
-
-            /* Anpassungen für die Swipe-Karten auf kleinen Screens */
             .swipe-container .card {
-                min-width: 240px;
+                min-width: 70vw;
                 scroll-snap-align: start;
             }
 
             .swipe-container .schedule-day {
-                min-width: 280px;
+                min-width: 80vw;
                 scroll-snap-align: start;
             }
 
@@ -773,6 +875,71 @@
                 scroll-snap-align: start;
             }
         }
+
+.cta-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+    background: var(--accent);
+    padding: 12px 20px;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    display: none; /* Hidden by default */
+    align-items: center;
+    gap: 15px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.cta-float.visible {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.cta-float a {
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.cta-float button {
+    background: rgba(0,0,0,0.2);
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 1.2rem;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    line-height: 1;
+}
+
+.btn {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(255, 75, 43, 0.4);
+}
+
+header, .modal-box {
+    backdrop-filter: blur(15px);
+    background-color: rgba(18, 18, 18, 0.85);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
     </style>
 </head>
 
@@ -855,7 +1022,7 @@
     <section id="kurse">
         <div class="container">
             <h2 style="text-align:center;">Unsere Kurse</h2>
-            <div class="swipe-container">
+            <div class="kurse-grid">
                 <div class="card">
                     <h3>Hip-Hop Minis</h3>
                     <p>Alter: 5–7 Jahre</p>
@@ -896,12 +1063,13 @@
         </div>
     </section>
 
-    <section id="stundenplan" style="background-color:#0a0a0a;">
+    <section id="stundenplan">
         <div class="container">
-            <h2 style="text-align:center;">Stundenplan</h2>
+            <h2 style="text-align:center;">Stundenplan nach Standort</h2>
 
+            <!-- LOCATION 1: SALZSTRASSE -->
+            <h3 class="location-header">Salzstraße 55</h3>
             <div class="swipe-container">
-
                 <div class="schedule-day">
                     <h3>Dienstag <span style="font-size:0.9rem;color:#888;font-weight:normal;">(Salzstraße 55, 41460
                             Neuss)</span></h3>
@@ -910,20 +1078,6 @@
                     <div class="schedule-item"><span>18:00 – 19:00</span><span>Urban Mix</span></div>
                     <div class="schedule-item"><span>19:00 – 20:00</span><span>Hip-Hop Anfänger (ab 16)</span></div>
                     <div class="schedule-item"><span>20:00 – 21:00</span><span>Afro</span></div>
-                </div>
-
-                <div class="schedule-day">
-                    <h3>Mittwoch <span style="font-size:0.9rem;color:#888;font-weight:normal;">(Welderstr. 42, 41469
-                            Neuss)</span></h3>
-                    <div class="schedule-item"><span>16:00 – 17:00</span><span>Hip-Hop Minis (5–7)</span></div>
-                    <div class="schedule-item"><span>17:15 – 18:15</span><span>Hip-Hop Kids (7–9)</span></div>
-                    <div class="schedule-item"><span>18:30 – 19:30</span><span>Afterwork (Erwachsene)</span></div>
-                </div>
-
-                <div class="schedule-day">
-                    <h3>Donnerstag <span style="font-size:0.9rem;color:#888;font-weight:normal;">(Welderstr. 42, 41469
-                            Neuss)</span></h3>
-                    <div class="schedule-item"><span>16:00 – 17:00</span><span>Hip-Hop Juniors (10–12)</span></div>
                 </div>
 
                 <div class="schedule-day">
@@ -941,7 +1095,25 @@
                     <div class="schedule-item"><span>09:00 – 11:00</span><span>Junior Team</span></div>
                     <div class="schedule-item"><span>11:00 – 14:00</span><span>Adults Team</span></div>
                 </div>
+            </div>
 
+            <!-- LOCATION 2: WELDERSTRASSE -->
+            <h3 class="location-header" style="margin-top: 40px;">WELDERSTRASSE 42</h3>
+            <div class="swipe-container">
+
+                <div class="schedule-day">
+                    <h3>Mittwoch <span style="font-size:0.9rem;color:#888;font-weight:normal;">(Welderstr. 42, 41469
+                            Neuss)</span></h3>
+                    <div class="schedule-item"><span>16:00 – 17:00</span><span>Hip-Hop Minis (5–7)</span></div>
+                    <div class="schedule-item"><span>17:15 – 18:15</span><span>Hip-Hop Kids (7–9)</span></div>
+                    <div class="schedule-item"><span>18:30 – 19:30</span><span>Afterwork (Erwachsene)</span></div>
+                </div>
+
+                <div class="schedule-day">
+                    <h3>Donnerstag <span style="font-size:0.9rem;color:#888;font-weight:normal;">(Welderstr. 42, 41469
+                            Neuss)</span></h3>
+                    <div class="schedule-item"><span>16:00 – 17:00</span><span>Hip-Hop Juniors (10–12)</span></div>
+                </div>
             </div>
         </div>
     </section>
@@ -970,32 +1142,40 @@
     <section id="preise">
         <div class="container">
             <h2 style="text-align:center;">Preise</h2>
-            <p style="text-align:center;margin-bottom:30px;font-size:1.2rem;">Starte ab 34,90 € / Monat</p>
+            <p style="text-align:center;margin-bottom:15px;font-size:1.2rem;">Starte ab 34,90 € / Monat</p>
 
-            <div class="swipe-container">
+            <div class="price-list">
 
-                <div class="card">
-                    <h3>1 Kurs</h3>
-                    <div style="font-size:2.5rem;color:var(--accent);font-weight:bold;">34,90 €</div>
-                    <p>pro Monat</p>
+                <div class="price-row">
+                    <div class="price-title">1 Kurs</div>
+                    <div>
+                        <div class="price-amount">34,90 €</div>
+                        <div class="price-freq">pro Monat</div>
+                    </div>
                 </div>
 
-                <div class="card">
-                    <h3>2 Kurse</h3>
-                    <div style="font-size:2.5rem;color:var(--accent);font-weight:bold;">54,90 €</div>
-                    <p>pro Monat</p>
+                <div class="price-row">
+                    <div class="price-title">2 Kurse</div>
+                    <div>
+                        <div class="price-amount">54,90 €</div>
+                        <div class="price-freq">pro Monat</div>
+                    </div>
                 </div>
 
-                <div class="card">
-                    <h3>3 Kurse</h3>
-                    <div style="font-size:2.5rem;color:var(--accent);font-weight:bold;">69,90 €</div>
-                    <p>pro Monat</p>
+                <div class="price-row">
+                    <div class="price-title">3 Kurse</div>
+                    <div>
+                        <div class="price-amount">69,90 €</div>
+                        <div class="price-freq">pro Monat</div>
+                    </div>
                 </div>
 
-                <div class="card" style="border:2px solid var(--accent);">
-                    <h3>Flatrate</h3>
-                    <div style="font-size:2.5rem;color:var(--accent);font-weight:bold;">79,90 €</div>
-                    <p>pro Monat</p>
+                <div class="price-row highlight">
+                    <div class="price-title">Flatrate</div>
+                    <div>
+                        <div class="price-amount">79,90 €</div>
+                        <div class="price-freq">pro Monat</div>
+                    </div>
                 </div>
 
             </div>
@@ -1004,16 +1184,14 @@
 
     <section id="community" style="background-color:#0a0a0a;">
         <div class="container">
-            <h3 style="text-align:center;margin-top:60px;color:#ccc;font-size:1rem;letter-spacing:2px;">Was unsere
+            <h3 style="text-align:center;margin-top:20px;color:#ccc;font-size:1rem;letter-spacing:2px;">Was unsere
                 Mitglieder sagen</h3>
 
             <div class="swipe-container">
                 <div class="video-card">
                     <div class="video-embed">
-                        <iframe 
-                            src="https://drive.google.com/file/d/1ZmFLczfUawQ2RqsYOjBcnSUQzGJabZUl/preview" 
-                            allowfullscreen 
-                            border="0">
+                        <iframe src="https://drive.google.com/file/d/1ZmFLczfUawQ2RqsYOjBcnSUQzGJabZUl/preview"
+                            allowfullscreen border="0">
                         </iframe>
                     </div>
                     <div class="video-card-label">„Wie bist du zu 414 gekommen?"</div>
@@ -1021,10 +1199,8 @@
 
                 <div class="video-card">
                     <div class="video-embed">
-                        <iframe 
-                            src="https://drive.google.com/drive/folders/1OYEli93AFvem4Exq4-332FDuz3ls-_XO" 
-                            allowfullscreen 
-                            border="0">
+                        <iframe src="https://drive.google.com/drive/folders/1OYEli93AFvem4Exq4-332FDuz3ls-_XO"
+                            allowfullscreen border="0">
                         </iframe>
                     </div>
                     <div class="video-card-label">„Was gefällt dir am meisten?"</div>
@@ -1032,10 +1208,8 @@
 
                 <div class="video-card">
                     <div class="video-embed">
-                        <iframe 
-                            src="https://drive.google.com/file/d/1ZmFLczfUawQ2RqsYOjBcnSUQzGJabZUl/preview" 
-                            allowfullscreen 
-                            border="0">
+                        <iframe src="https://drive.google.com/file/d/1ZmFLczfUawQ2RqsYOjBcnSUQzGJabZUl/preview"
+                            allowfullscreen border="0">
                         </iframe>
                     </div>
                     <div class="video-card-label">„Warum bleibst du hier?"</div>
@@ -1044,104 +1218,22 @@
         </div>
     </section>
 
-        <section id="instagram">
+    <section id="instagram">
         <div class="instagram-inner">
             <div class="instagram-icon">📸</div>
             <h2>Folge uns auf Instagram</h2>
             <div class="instagram-handle">@414UDA</div>
             <p class="instagram-sub">Performances, Behind-the-Scenes, Events &amp; mehr — täglich neue Einblicke.</p>
-            
-            <blockquote class="instagram-media" data-instgrm-captioned
-                data-instgrm-permalink="https://www.instagram.com/p/DKZxtPis76X/?utm_source=ig_embed&amp;utm_campaign=loading"
-                data-instgrm-version="14"
-                style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px auto; max-width:540px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
-                <div style="padding:16px;"> <a
-                        href="https://www.instagram.com/p/DKZxtPis76X/?utm_source=ig_embed&amp;utm_campaign=loading"
-                        style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;"
-                        target="_blank">
-                        <div style=" display: flex; flex-direction: row; align-items: center;">
-                            <div
-                                style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;">
-                            </div>
-                            <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;">
-                                <div
-                                    style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;">
-                                </div>
-                                <div
-                                    style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;">
-                                </div>
-                            </div>
-                        </div>
-                        <div style="padding: 19% 0;"></div>
-                        <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px"
-                                height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg"
-                                xmlns:xlink="https://www.w3.org/1999/xlink">
-                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                    <g transform="translate(-511.000000, -20.000000)" fill="#000000">
-                                        <g>
-                                            <path
-                                                d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631">
-                                            </path>
-                                        </g>
-                                    </g>
-                                </g>
-                            </svg></div>
-                        <div style="padding-top: 8px;">
-                            <div
-                                style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">
-                                Post ansehen</div>
-                        </div>
-                        <div style="padding: 12.5% 0;"></div>
-                        <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;">
-                            <div>
-                                <div
-                                    style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);">
-                                </div>
-                                <div
-                                    style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;">
-                                </div>
-                                <div
-                                    style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);">
-                                </div>
-                            </div>
-                            <div style="margin-left: 8px;">
-                                <div
-                                    style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;">
-                                </div>
-                                <div
-                                    style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)">
-                                </div>
-                            </div>
-                            <div style="margin-left: auto;">
-                                <div
-                                    style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);">
-                                </div>
-                                <div
-                                    style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);">
-                                </div>
-                                <div
-                                    style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);">
-                                </div>
-                            </div>
-                        </div>
-                        <div
-                            style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;">
-                            <div
-                                style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;">
-                            </div>
-                            <div
-                                style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;">
-                            </div>
-                        </div>
-                    </a>
-                    <p
-                        style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">
-                        <a href="https://www.instagram.com/p/DKZxtPis76X/?utm_source=ig_embed&amp;utm_campaign=loading"
-                            style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;"
-                            target="_blank">A post shared by 414 - Urban Dance Academy (@414uda)</a>
-                    </p>
-                </div>
-            </blockquote>
+
+            <div class="instagram-grid">
+                <a href="https://instagram.com/p/ID" class="insta-item"><img
+                        src="https://www.instagram.com/p/DX47W7bjW0G/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+                        alt="Insta"></a>
+                <a href="https://instagram.com/p/ID" class="insta-item"><img src="thumb2.jpg" alt="Insta"></a>
+                <!-- Use 4 or 6 images here -->
+            </div>
+
+
 
             <script async src="//www.instagram.com/embed.js"></script>
             <br>
@@ -1206,6 +1298,23 @@
                 <p>Welderstr. 42, 41469 Neuss</p>
             </div>
         </div>
+
+        <section id="location">
+            <h2>auf karte einsehen</h2>
+            <div class="map-container">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2603.9574050033207!2d6.685602941151962!3d51.20435327186362!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b8b453973120e5%3A0x13c30e978151fa26!2sSalzstra%C3%9Fe%2055%2C%2041460%20Neuss!5e1!3m2!1sde!2sde!4v1779309363760!5m2!1sde!2sde"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2607.2394893536234!2d6.691987500000001!3d51.1462748!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bf4acfe40f3463%3A0xf5d848470bf83481!2sWelderstra%C3%9Fe%2042%2C%2041469%20Neuss!5e1!3m2!1sde!2sde!4v1779309641930!5m2!1sde!2sde"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </section>
+
+
         <div class="footer-legal">
             <a onclick="openModal('impressum')">Impressum</a>
             <a onclick="openModal('datenschutz')">Datenschutzerklärung</a>
@@ -1268,6 +1377,12 @@
         </div>
     </div>
 
+    <!-- Floating CTA -->
+<div id="cta-float" class="cta-float">
+    <a href="#probetraining">Jetzt Probetraining sichern</a>
+    <button onclick="document.getElementById('cta-float').style.display='none'">×</button>
+</div>
+
     <script>
         // Modal Logic
         function openModal(id) {
@@ -1324,7 +1439,28 @@
                 document.body.style.overflow = '';
             });
         });
+
+        window.addEventListener('scroll', () => {
+    const cta = document.getElementById('cta-float');
+    // Only proceed if the CTA hasn't been closed by the user
+    if (cta.style.display === 'none') return;
+
+    const hero = document.getElementById('hero');
+    const probetraining = document.getElementById('probetraining');
+    
+    // Check if hero and probetraining exist before accessing offsetTop
+    if (hero && probetraining) {
+        const scrollPos = window.scrollY;
+        // Show after scrolling past hero (approx 500px), hide before footer
+        if (scrollPos > 500 && scrollPos < (probetraining.offsetTop - 600)) {
+            cta.classList.add('visible');
+        } else {
+            cta.classList.remove('visible');
+        }
+    }
+});
     </script>
 
 </body>
+
 </html>
