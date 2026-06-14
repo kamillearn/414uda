@@ -30,7 +30,10 @@
        Until then we load from Google Fonts – blocked by CSP until consent is given. -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <!-- TODO: Host both Montserrat and Bricolage Grotesque locally for full GDPR compliance
+       (Bricolage Grotesque adds a second Google Fonts request; both can be self-hosted
+        by downloading the variable font from fonts.google.com) -->
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Preload hero image -->
   <link rel="preload" as="image" href="/images/1.png">
@@ -171,7 +174,7 @@
   <div class="about-layout">
     <div class="reveal">
       <h2>Mehr als nur Tanz</h2>
-      <p style="font-size:1.15rem;color:#ccc;margin-bottom:18px;">Bei uns geht es nicht nur um Schritte — sondern um Ausdruck, Selbstbewusstsein und Community.</p>
+      <p style="font-size:1.15rem;margin-bottom:18px;">Bei uns geht es nicht nur um Schritte — sondern um Ausdruck, Selbstbewusstsein und Community.</p>
       <p>Ob Anfänger oder Fortgeschrittener, Kind oder Erwachsener — bei 414 UDA findest du deinen Stil, deine Crew und dein Selbstbewusstsein. Mit erfahrenen Coaches, einem einladenden Ambiente und einer starken Gemeinschaft bist du hier genau richtig.</p>
       <p>Unsere zwei Standorte in Neuss bieten dir flexible Zeiten und vielfältige Kurse — von Hip-Hop über Afro bis House.</p>
       <a href="#probetraining" class="btn" style="margin-top:8px;">Starte jetzt</a>
@@ -192,10 +195,10 @@
 </section>
 
 <!-- ── KURSE ── -->
-<section id="kurse" style="background:#0d0d0d;">
+<section id="kurse">
   <div class="container">
     <h2 style="text-align:center;" class="reveal">Unsere Kurse</h2>
-    <p style="text-align:center;color:#888;margin-top:-10px;margin-bottom:0;" class="reveal">Für alle Altersgruppen und Levels.</p>
+    <p style="text-align:center;margin-top:-10px;margin-bottom:0;" class="reveal">Für alle Altersgruppen und Levels.</p>
     <div class="kurse-grid">
       <div class="card reveal">
         <h3>Hip-Hop Minis</h3>
@@ -286,7 +289,7 @@
 <section id="gallery">
   <div class="container">
     <h2 style="text-align:center;" class="reveal">Auftritte &amp; Events</h2>
-    <p style="text-align:center;color:#aaa;margin-top:-10px;" class="reveal">Wir tanzen nicht nur — wir performen.</p>
+    <p style="text-align:center;margin-top:-10px;" class="reveal">Wir tanzen nicht nur — wir performen.</p>
 
     <div class="gallery-grid">
       <div class="gallery-item wide reveal">
@@ -371,10 +374,10 @@
 </div>
 
 <!-- ── PREISE ── -->
-<section id="preise" style="background:#0d0d0d;">
+<section id="preise">
   <div class="container">
     <h2 style="text-align:center;" class="reveal">Preise</h2>
-    <p style="text-align:center;margin-bottom:24px;font-size:1.1rem;" class="reveal">Starte ab <strong style="color:var(--accent);">34,90 €</strong> / Monat</p>
+    <p style="text-align:center;margin-bottom:24px;font-size:1.1rem;" class="reveal">Starte ab <strong style="color:var(--accent-deep);">34,90 €</strong> / Monat</p>
 
     <div class="price-list">
       <div class="price-row reveal">
@@ -399,7 +402,7 @@
         </div>
       </div>
       <div class="price-row highlight reveal">
-        <div class="price-title">Flatrate <span style="font-size:0.75rem;color:#888;font-weight:400;text-transform:none;letter-spacing:0;">– Alle Kurse</span></div>
+        <div class="price-title">Flatrate <span style="font-size:0.75rem;font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink-faint);">– Alle Kurse</span></div>
         <div>
           <div class="price-amount">79,90 €</div>
           <div class="price-freq">pro Monat</div>
@@ -413,7 +416,7 @@
 <section id="community">
   <div class="container">
     <h2 style="text-align:center;" class="reveal">Was unsere Community sagt</h2>
-    <p style="text-align:center;color:#888;margin-top:-10px;" class="reveal">Echte Stimmen. Echte Erlebnisse.</p>
+    <p style="text-align:center;margin-top:-10px;" class="reveal">Echte Stimmen. Echte Erlebnisse.</p>
 
     <!--
       VIDEO SECTION
@@ -529,9 +532,9 @@
     -->
     <div class="insta-follow-card reveal">
       <div style="font-size:3rem;margin-bottom:16px;" aria-hidden="true">📷</div>
-      <p style="color:#ccc;font-size:1rem;margin-bottom:6px;">Über 300 Mitglieder. Unzählige Momente.</p>
-      <p style="color:#888;font-size:0.88rem;margin-bottom:24px;">
-        Folge <strong style="color:var(--accent);">@414UDA</strong> auf Instagram für die neuesten Videos, Auftritte und hinter den Kulissen-Momente.
+      <p style="font-size:1rem;margin-bottom:6px;">Über 300 Mitglieder. Unzählige Momente.</p>
+      <p style="font-size:0.88rem;margin-bottom:24px;">
+        Folge <strong style="color:var(--accent-deep);">@414UDA</strong> auf Instagram für die neuesten Videos, Auftritte und hinter den Kulissen-Momente.
       </p>
       <!-- TODO: Once insta-1.png … insta-6.png are in /images/, replace this card with the grid below:
       <div class="instagram-grid">
@@ -548,7 +551,7 @@
 </section>
 
 <!-- ── PROBETRAINING ── -->
-<section id="probetraining" style="background:#0d0d0d;">
+<section id="probetraining">
   <div class="probetraining-layout">
     <div class="reveal">
       <picture>
@@ -565,7 +568,7 @@
 
     <div class="reveal">
       <h2>Probetraining</h2>
-      <p style="font-size:1.1rem;color:#ccc;margin-bottom:28px;">Finde den passenden Kurs — ohne Druck, ohne Risiko.</p>
+      <p style="font-size:1.1rem;margin-bottom:28px;">Finde den passenden Kurs — ohne Druck, ohne Risiko.</p>
 
       <form id="probetraining-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
         <input type="hidden" name="access_key" value="116b679d-6a2c-427a-8d8b-78f779888f01">
@@ -629,7 +632,7 @@
       </div>
 
       <div style="text-align:center;margin-top:28px;">
-        <p style="margin-bottom:14px;color:#aaa;font-size:0.9rem;">Oder schreib uns direkt auf WhatsApp:</p>
+        <p style="margin-bottom:14px;font-size:0.9rem;">Oder schreib uns direkt auf WhatsApp:</p>
         <a href="https://wa.me/491789737619" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" aria-label="Per WhatsApp schreiben: 0178 973 76 19">Per WhatsApp schreiben</a>
       </div>
     </div>
@@ -640,7 +643,7 @@
 <section id="standorte">
   <div class="container">
     <h2 style="text-align:center;" class="reveal">Standorte auf der Karte</h2>
-    <p style="text-align:center;color:#888;margin-top:-10px;" class="reveal">Zwei Studios. Eine Community. In Neuss.</p>
+    <p style="text-align:center;margin-top:-10px;" class="reveal">Zwei Studios. Eine Community. In Neuss.</p>
 
     <div class="map-container reveal">
       <div class="map-wrapper">
@@ -762,7 +765,7 @@
     <a role="button" tabindex="0" onclick="openModal('datenschutz')" onkeydown="if(event.key==='Enter')openModal('datenschutz')">Datenschutzerklärung</a>
     <a role="button" tabindex="0" onclick="openModal('agb')" onkeydown="if(event.key==='Enter')openModal('agb')">AGB</a>
   </div>
-  <p style="text-align:center;color:#333;font-size:0.75rem;margin-top:28px;">© 2025 414 Urban Dance Academy. Alle Rechte vorbehalten.</p>
+  <p class="footer-copy">© 2025 414 Urban Dance Academy. Alle Rechte vorbehalten.</p>
 </footer>
 
 <!-- ── MODALS ── -->
