@@ -14,7 +14,7 @@
   <meta property="og:description"
     content="Hip-Hop, House & Urban Dance für alle Altersgruppen. 2 Standorte in Neuss. Jetzt Probetraining sichern!">
   <meta property="og:image"
-    content="https://www.414uda.dehttps://github.com/kamillearn/414uda/blob/main/images/1.png?raw=true">
+    content="https://raw.githubusercontent.com/kamillearn/414uda/main/images/1.webp">
   <meta property="og:url" content="https://www.414uda.de/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="de_DE">
@@ -24,7 +24,7 @@
   <meta name="twitter:title" content="414 Urban Dance Academy | Neuss">
   <meta name="twitter:description" content="Hip-Hop, House & Urban Dance für alle Altersgruppen. 2 Standorte in Neuss.">
   <meta name="twitter:image"
-    content="https://www.414uda.dehttps://github.com/kamillearn/414uda/blob/main/images/1.png?raw=true">
+    content="https://raw.githubusercontent.com/kamillearn/414uda/main/images/1.webp">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="/images/favicon.png">
@@ -42,8 +42,8 @@
     href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Montserrat:wght@300;400;600;700;800&display=swap"
     rel="stylesheet">
 
-  <!-- Preload hero image -->
-  <link rel="preload" as="image" href="https://github.com/kamillearn/414uda/blob/main/images/1.png?raw=true">
+  <!-- Preload hero image (WebP, absolute URL) -->
+  <link rel="preload" as="image" href="https://raw.githubusercontent.com/kamillearn/414uda/main/images/1.webp" type="image/webp">
 
   <link rel="stylesheet" href="styles.css">
 
@@ -55,7 +55,7 @@
     "name": "414 Urban Dance Academy",
     "url": "https://www.414uda.de",
     "logo": "https://www.414uda.de/images/favicon.png",
-    "image": "https://www.414uda.dehttps://github.com/kamillearn/414uda/blob/main/images/1.png?raw=true",
+    "image": "https://raw.githubusercontent.com/kamillearn/414uda/main/images/1.webp",
     "description": "Hip-Hop, House und Urban Dance für alle Altersgruppen. 2 Standorte in Neuss.",
     "telephone": "+491789737619",
     "email": "info@414uda.de",
@@ -195,12 +195,10 @@
         <a href="#probetraining" class="btn" style="margin-top:8px;">Starte jetzt</a>
       </div>
       <div class="reveal">
-        <picture>
-          <source srcset="/images/2 (1).png" type="image/png">
-          <img class="about-img" src="/images/2 (1).png"
-            alt="Tänzerin der 414 Urban Dance Academy posiert ausdrucksstark im Studio" width="540" height="480"
-            loading="lazy">
-        </picture>
+        <img class="about-img"
+          src="https://raw.githubusercontent.com/kamillearn/414uda/main/images/2-1.webp"
+          alt="Tänzerin der 414 Urban Dance Academy posiert ausdrucksstark im Studio"
+          width="540" height="480" loading="lazy">
       </div>
     </div>
   </section>
@@ -252,12 +250,13 @@
     </div>
   </section>
 
-  <!-- ── STUNDENPLAN ── -->
-  <section id="stundenplan">
-    <div class="container">
-      <h2 style="text-align:center;" class="reveal">Stundenplan nach Standort</h2>
+<!-- ── STUNDENPLAN ── -->
+<section id="stundenplan">
+  <div class="container">
+    <h2 style="text-align:center;" class="reveal">Stundenplan nach Standort</h2>
 
-      <span class="location-header reveal">Salzstraße 55, 41460 Neuss</span>
+    <span class="location-header reveal">Salzstraße 55, 41460 Neuss</span>
+    <div class="swipe-wrapper">
       <div class="swipe-container" role="region" aria-label="Stundenplan Salzstraße – horizontal scrollbar">
         <div class="schedule-day">
           <h3>Dienstag</h3>
@@ -274,14 +273,16 @@
           <div class="schedule-item"><span>20:00 – 21:00</span><span>Freestyle Session</span></div>
         </div>
         <div class="schedule-day">
-          <h3>Samstag <span style="font-size:0.85rem;color:#888;font-weight:400;">(Meisterschaft)</span></h3>
+          <h3>Samstag <span style="font-size:0.85rem;color:var(--ink-faint);font-weight:400;">(Meisterschaft)</span></h3>
           <div class="schedule-item"><span>09:00 – 10:30</span><span>Duo Training</span></div>
           <div class="schedule-item"><span>09:00 – 11:00</span><span>Junior Team</span></div>
           <div class="schedule-item"><span>11:00 – 14:00</span><span>Adults Team</span></div>
         </div>
       </div>
+    </div>
 
-      <span class="location-header reveal" style="margin-top:40px;">Welderstraße 42, 41469 Neuss</span>
+    <span class="location-header reveal" style="margin-top:40px;">Welderstraße 42, 41469 Neuss</span>
+    <div class="swipe-wrapper">
       <div class="swipe-container" role="region" aria-label="Stundenplan Welderstraße – horizontal scrollbar">
         <div class="schedule-day">
           <h3>Mittwoch</h3>
@@ -295,102 +296,128 @@
         </div>
       </div>
     </div>
-  </section>
-
-  <!-- ── GALLERY ── -->
-  <section id="gallery">
-    <div class="container">
-      <h2 style="text-align:center;" class="reveal">Auftritte &amp; Events</h2>
-      <p style="text-align:center;margin-top:-10px;" class="reveal">Wir tanzen nicht nur — wir performen.</p>
-
-      <div class="gallery-grid">
-        <div class="gallery-item wide reveal">
-          <img src="https://github.com/kamillearn/414uda/blob/main/images/standing_pose.png" alt="414 UDA Tänzer performen synchron auf der Bühne" width="800" height="280"
-            loading="lazy">
-          <div class="gallery-overlay"><span class="gallery-overlay-icon" aria-hidden="true">⊕</span></div>
-        </div>
-
-        <div class="gallery-item reveal">
-          <img src="/images/3.png" alt="Hip-Hop Tänzerin der 414 UDA in Bewegung" width="400" height="240"
-            loading="lazy">
-          <div class="gallery-overlay"><span class="gallery-overlay-icon" aria-hidden="true">⊕</span></div>
-        </div>
-
-        <div class="gallery-item reveal">
-          <img src="/images/4.png" alt="Urban Dance Gruppe der 414 UDA beim Training" width="400" height="240"
-            loading="lazy">
-          <div class="gallery-overlay"><span class="gallery-overlay-icon" aria-hidden="true">⊕</span></div>
-        </div>
-
-        <div class="gallery-item reveal">
-          <img src="/images/5.png" alt="Auftritt der 414 Urban Dance Academy – Energie und Stil" width="400"
-            height="240" loading="lazy">
-          <div class="gallery-overlay"><span class="gallery-overlay-icon" aria-hidden="true">⊕</span></div>
-        </div>
-
-        <div class="gallery-item reveal">
-          <img src="/images/9.png" alt="Freestyle Session bei 414 UDA Neuss" width="400" height="240" loading="lazy">
-          <div class="gallery-overlay"><span class="gallery-overlay-icon" aria-hidden="true">⊕</span></div>
-        </div>
-
-        <div class="gallery-item reveal">
-          <img src="/images/6.png" alt="Tänzerinnen der 414 UDA bei einem Event in Neuss" width="400" height="240"
-            loading="lazy">
-          <div class="gallery-overlay"><span class="gallery-overlay-icon" aria-hidden="true">⊕</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- LIGHTBOX -->
-  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Bild-Vergrößerung">
-    <button id="lightbox-close" aria-label="Schließen">&times;</button>
-    <button id="lightbox-prev" aria-label="Vorheriges Bild">&#8249;</button>
-    <img id="lightbox-img" src="" alt="">
-    <button id="lightbox-next" aria-label="Nächstes Bild">&#8250;</button>
   </div>
+</section>
 
-  <!-- ── PREISE ── -->
-  <section id="preise">
-    <div class="container">
-      <h2 style="text-align:center;" class="reveal">Preise</h2>
-      <p style="text-align:center;margin-bottom:24px;font-size:1.1rem;" class="reveal">Starte ab <strong
-          style="color:var(--accent-deep);">34,90 €</strong> / Monat</p>
+<!-- ── GALLERY ── -->
+<section id="gallery">
+  <div class="container">
+    <h2 style="text-align:center;" class="reveal">Auftritte &amp; Events</h2>
+    <p style="text-align:center;margin-top:-10px;" class="reveal">Wir tanzen nicht nur — wir performen.</p>
 
-      <div class="price-list">
-        <div class="price-row reveal">
-          <div class="price-title">1 Kurs</div>
-          <div>
-            <div class="price-amount">34,90 €</div>
-            <div class="price-freq">pro Monat</div>
-          </div>
+    <div class="gallery-grid">
+      <div class="gallery-item wide reveal">
+        <img
+          src="https://raw.githubusercontent.com/kamillearn/414uda/main/images/8-thumb.webp"
+          data-full="https://raw.githubusercontent.com/kamillearn/414uda/main/images/8.webp"
+          alt="414 UDA Gruppe bei großem Bühnenauftritt – Choreografie in Aktion"
+          width="800" height="280" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-overlay-icon" aria-hidden="true">⊕</span></div>
+      </div>
+
+      <div class="gallery-item wide reveal">
+        <img
+          src="https://raw.githubusercontent.com/kamillearn/414uda/main/images/7-thumb.webp"
+          data-full="https://raw.githubusercontent.com/kamillearn/414uda/main/images/7.webp"
+          alt="414 UDA Tänzer performen synchron auf der Bühne"
+          width="800" height="280" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-overlay-icon" aria-hidden="true">⊕</span></div>
+      </div>
+
+      <div class="gallery-item reveal">
+        <img
+          src="https://raw.githubusercontent.com/kamillearn/414uda/main/images/3-thumb.webp"
+          data-full="https://raw.githubusercontent.com/kamillearn/414uda/main/images/3.webp"
+          alt="Hip-Hop Tänzerin der 414 UDA in Bewegung"
+          width="400" height="240" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-overlay-icon" aria-hidden="true">⊕</span></div>
+      </div>
+
+      <div class="gallery-item reveal">
+        <img
+          src="https://raw.githubusercontent.com/kamillearn/414uda/main/images/4-thumb.webp"
+          data-full="https://raw.githubusercontent.com/kamillearn/414uda/main/images/4.webp"
+          alt="Urban Dance Gruppe der 414 UDA beim Training"
+          width="400" height="240" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-overlay-icon" aria-hidden="true">⊕</span></div>
+      </div>
+
+      <div class="gallery-item reveal">
+        <img
+          src="https://raw.githubusercontent.com/kamillearn/414uda/main/images/5-thumb.webp"
+          data-full="https://raw.githubusercontent.com/kamillearn/414uda/main/images/5.webp"
+          alt="Auftritt der 414 Urban Dance Academy – Energie und Stil"
+          width="400" height="240" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-overlay-icon" aria-hidden="true">⊕</span></div>
+      </div>
+
+      <div class="gallery-item reveal">
+        <img
+          src="https://raw.githubusercontent.com/kamillearn/414uda/main/images/9-thumb.webp"
+          data-full="https://raw.githubusercontent.com/kamillearn/414uda/main/images/9.webp"
+          alt="Freestyle Session bei 414 UDA Neuss"
+          width="400" height="240" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-overlay-icon" aria-hidden="true">⊕</span></div>
+      </div>
+
+      <div class="gallery-item reveal">
+        <img
+          src="https://raw.githubusercontent.com/kamillearn/414uda/main/images/6-thumb.webp"
+          data-full="https://raw.githubusercontent.com/kamillearn/414uda/main/images/6.webp"
+          alt="Tänzerinnen der 414 UDA bei einem Event in Neuss"
+          width="400" height="240" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-overlay-icon" aria-hidden="true">⊕</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Bild-Vergrößerung">
+  <button id="lightbox-close" aria-label="Schließen">&times;</button>
+  <button id="lightbox-prev" aria-label="Vorheriges Bild">&#8249;</button>
+  <img id="lightbox-img" src="" alt="">
+  <button id="lightbox-next" aria-label="Nächstes Bild">&#8250;</button>
+</div>
+
+<!-- ── PREISE ── -->
+<section id="preise">
+  <div class="container">
+    <h2 style="text-align:center;" class="reveal">Preise</h2>
+    <p style="text-align:center;margin-bottom:24px;font-size:1.1rem;" class="reveal">Starte ab <strong style="color:var(--accent-deep);">34,90 €</strong> / Monat</p>
+
+    <div class="price-list">
+      <div class="price-row reveal" role="button" tabindex="0" aria-label="1 Kurs – 34,90 € pro Monat. Klicken zum Anmelden.">
+        <div class="price-title">1 Kurs</div>
+        <div>
+          <div class="price-amount">34,90 €</div>
+          <div class="price-freq">pro Monat</div>
         </div>
-        <div class="price-row reveal">
-          <div class="price-title">2 Kurse</div>
-          <div>
-            <div class="price-amount">54,90 €</div>
-            <div class="price-freq">pro Monat</div>
-          </div>
+      </div>
+      <div class="price-row reveal" role="button" tabindex="0" aria-label="2 Kurse – 54,90 € pro Monat. Klicken zum Anmelden.">
+        <div class="price-title">2 Kurse</div>
+        <div>
+          <div class="price-amount">54,90 €</div>
+          <div class="price-freq">pro Monat</div>
         </div>
-        <div class="price-row reveal">
-          <div class="price-title">3 Kurse</div>
-          <div>
-            <div class="price-amount">69,90 €</div>
-            <div class="price-freq">pro Monat</div>
-          </div>
+      </div>
+      <div class="price-row reveal" role="button" tabindex="0" aria-label="3 Kurse – 69,90 € pro Monat. Klicken zum Anmelden.">
+        <div class="price-title">3 Kurse</div>
+        <div>
+          <div class="price-amount">69,90 €</div>
+          <div class="price-freq">pro Monat</div>
         </div>
-        <div class="price-row highlight reveal">
-          <div class="price-title">Flatrate <span
-              style="font-size:0.75rem;font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink-faint);">–
-              Alle Kurse</span></div>
-          <div>
-            <div class="price-amount">79,90 €</div>
-            <div class="price-freq">pro Monat</div>
-          </div>
+      </div>
+      <div class="price-row highlight reveal" role="button" tabindex="0" aria-label="Flatrate – 79,90 € pro Monat. Klicken zum Anmelden.">
+        <div class="price-title">Flatrate <span style="font-size:0.75rem;font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink-faint);">– Alle Kurse</span></div>
+        <div>
+          <div class="price-amount">79,90 €</div>
+          <div class="price-freq">pro Monat</div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- ── COMMUNITY (Videos + Testimonials) ── -->
   <section id="community">
@@ -400,80 +427,77 @@
 
       <!--
       VIDEO SECTION
-      TODO: Place your video files in /videos/ and update the src attributes below.
-      Each <video> should have a distinct poster image (e.g., poster="/images/poster-1.png").
-      File format: MP4 (H.264) recommended. Max file size ~10MB each for fast loading.
-      Current Drive embed (DID 1ZmFLczfUawQ2RqsYOjBcnSUQzGJabZUl) used as iframe fallback
-      until self-hosted videos are available.
+      TODO: Place your 3 video files in /videos/ and update the src attributes below.
+            Recommended format: MP4 (H.264 / AAC), max ~15 MB each.
+            Add poster images (first frame or a thumbnail) in /images/:
+              poster="/images/poster-1.webp", poster="/images/poster-2.webp" etc.
+            The <video> tags below render with object-fit:cover so portrait videos
+            fill the card without black bars.
     -->
 
-      <!-- Desktop 3-up grid -->
-      <div class="video-grid">
-        <div class="video-card reveal">
-          <div class="video-embed">
-            <!-- TODO: Replace with <video src="/videos/testimonial-1.mp4" poster="/images/poster-1.png" controls playsinline></video> -->
-            <iframe src="https://drive.google.com/file/d/1ZmFLczfUawQ2RqsYOjBcnSUQzGJabZUl/preview" allow="autoplay"
-              allowfullscreen loading="lazy" title="Testimonial – Wie bist du zu 414 gekommen?">
-            </iframe>
-          </div>
-          <div class="video-card-label">„Wie bist du zu 414 gekommen?"</div>
+    <!-- Desktop 3-up grid -->
+    <div class="video-grid">
+      <div class="video-card reveal">
+        <div class="video-embed">
+          <!-- TODO: set src="/videos/testimonial-1.mp4" and poster once files are added -->
+          <video controls playsinline preload="none" aria-label="Testimonial – Wie bist du zu 414 gekommen?">
+            <source src="" type="video/mp4">
+            Dein Browser unterstützt kein HTML5-Video.
+          </video>
         </div>
-
-        <div class="video-card reveal">
-          <div class="video-embed">
-            <!-- TODO: Replace with second distinct video file -->
-            <iframe src="https://drive.google.com/file/d/13gjHCkKSAUt2jq1lQ3x6OSpDtxmVSSZV/preview" allow="autoplay"
-              allowfullscreen loading="lazy" title="Testimonial – Was gefällt dir am meisten?">
-            </iframe>
-          </div>
-          <div class="video-card-label">„Was gefällt dir am meisten?"</div>
-        </div>
-
-        <div class="video-card reveal">
-          <div class="video-embed">
-            <!-- TODO: Replace with third distinct video file -->
-            <iframe src="https://drive.google.com/file/d/1XJrbEqbjb9DAGO5yI1nd7ZHAOuV3beYK/preview" allow="autoplay"
-              allowfullscreen loading="lazy" title="Testimonial – Warum bleibst du hier?">
-            </iframe>
-          </div>
-          <div class="video-card-label">„Warum bleibst du hier?"</div>
-        </div>
-
-        <div class="video-card reveal">
-          <div class="video-embed">
-            <!-- TODO: Replace with third distinct video file -->
-            <iframe src="https://drive.google.com/file/d/1hUnoPq8fL5avuZ8sc4K5ndw9m_uSA2rm/preview" allow="autoplay"
-              allowfullscreen loading="lazy" title="Testimonial – Warum bleibst du hier?">
-            </iframe>
-          </div>
-          <div class="video-card-label">„Warum bleibst du hier?"</div>
-        </div>
+        <div class="video-card-label">„Wie bist du zu 414 gekommen?"</div>
       </div>
 
-      <!-- Mobile swipe carousel -->
-      <div class="video-swipe" role="region" aria-label="Testimonial Videos – horizontal scrollbar">
-        <div class="video-card">
-          <div class="video-embed">
-            <iframe src="https://drive.google.com/file/d/1ZmFLczfUawQ2RqsYOjBcnSUQzGJabZUl/preview" allow="autoplay"
-              allowfullscreen loading="lazy" title="Testimonial 1"></iframe>
-          </div>
-          <div class="video-card-label">„Wie bist du zu 414 gekommen?"</div>
+      <div class="video-card reveal">
+        <div class="video-embed">
+          <!-- TODO: set src="/videos/testimonial-2.mp4" -->
+          <video controls playsinline preload="none" aria-label="Testimonial – Was gefällt dir am meisten?">
+            <source src="" type="video/mp4">
+            Dein Browser unterstützt kein HTML5-Video.
+          </video>
         </div>
-        <div class="video-card">
-          <div class="video-embed">
-            <iframe src="https://drive.google.com/file/d/1ZmFLczfUawQ2RqsYOjBcnSUQzGJabZUl/preview" allow="autoplay"
-              allowfullscreen loading="lazy" title="Testimonial 2"></iframe>
-          </div>
-          <div class="video-card-label">„Was gefällt dir am meisten?"</div>
-        </div>
-        <div class="video-card">
-          <div class="video-embed">
-            <iframe src="https://drive.google.com/file/d/1ZmFLczfUawQ2RqsYOjBcnSUQzGJabZUl/preview" allow="autoplay"
-              allowfullscreen loading="lazy" title="Testimonial 3"></iframe>
-          </div>
-          <div class="video-card-label">„Warum bleibst du hier?"</div>
-        </div>
+        <div class="video-card-label">„Was gefällt dir am meisten?"</div>
       </div>
+
+      <div class="video-card reveal">
+        <div class="video-embed">
+          <!-- TODO: set src="/videos/testimonial-3.mp4" -->
+          <video controls playsinline preload="none" aria-label="Testimonial – Warum bleibst du hier?">
+            <source src="" type="video/mp4">
+            Dein Browser unterstützt kein HTML5-Video.
+          </video>
+        </div>
+        <div class="video-card-label">„Warum bleibst du hier?"</div>
+      </div>
+    </div>
+
+    <!-- Mobile swipe carousel (same videos, duplicated for layout) -->
+    <div class="video-swipe" role="region" aria-label="Testimonial Videos – horizontal scrollbar">
+      <div class="video-card">
+        <div class="video-embed">
+          <video controls playsinline preload="none" aria-label="Testimonial 1">
+            <source src="" type="video/mp4">
+          </video>
+        </div>
+        <div class="video-card-label">„Wie bist du zu 414 gekommen?"</div>
+      </div>
+      <div class="video-card">
+        <div class="video-embed">
+          <video controls playsinline preload="none" aria-label="Testimonial 2">
+            <source src="" type="video/mp4">
+          </video>
+        </div>
+        <div class="video-card-label">„Was gefällt dir am meisten?"</div>
+      </div>
+      <div class="video-card">
+        <div class="video-embed">
+          <video controls playsinline preload="none" aria-label="Testimonial 3">
+            <source src="" type="video/mp4">
+          </video>
+        </div>
+        <div class="video-card-label">„Warum bleibst du hier?"</div>
+      </div>
+    </div>
 
       <!-- Written testimonials -->
       <div class="testimonials-grid" style="margin-top:50px;">
@@ -538,15 +562,16 @@
 
   <!-- ── PROBETRAINING ── -->
   <section id="probetraining">
-<div class="probetraining-layout">
-  <div class="reveal">
-    <picture>
-      <source srcset="https://raw.githubusercontent.com/kamillearn/414uda/main/images/green_shirt.png" type="image/png">
-      <img class="probetraining-img" src="https://raw.githubusercontent.com/kamillearn/414uda/main/images/green_shirt.png"
-        alt="414 UDA Coach bereitet Tänzer auf das Probetraining vor" width="540" height="560" loading="lazy">
-    </picture>
-  </div>
-
+    <div class="probetraining-layout">
+      <div class="reveal">
+        <img
+          class="probetraining-img"
+          src="https://raw.githubusercontent.com/kamillearn/414uda/main/images/1-1.webp"
+          alt="414 UDA Coach bereitet Tänzer auf das Probetraining vor"
+          width="540"
+          height="560"
+          loading="lazy">
+      </div>
 
       <div class="reveal">
         <h2>Probetraining</h2>

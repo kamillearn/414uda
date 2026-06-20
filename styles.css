@@ -264,7 +264,7 @@ header {
       rgba(246,241,231,0.95) 0%,
       rgba(246,241,231,0.65) 42%,
       rgba(246,241,231,0.12) 100%),
-    url('/images/1.png') center/cover no-repeat;
+    url('https://raw.githubusercontent.com/kamillearn/414uda/main/images/1.webp') center/cover no-repeat;
   z-index: 0;
   transform: translateZ(0);
   will-change: transform;
@@ -457,6 +457,7 @@ header {
   background: var(--surface-warm);
   border-radius: 12px;
   border: 1px solid var(--border);
+  position: relative;
 }
 .swipe-container::-webkit-scrollbar { display: none; }
 .swipe-container .schedule-day {
@@ -464,6 +465,23 @@ header {
   flex-shrink: 0;
   scroll-snap-align: start;
   margin-bottom: 0;
+}
+
+/* Fade-out edge hint (desktop: subtle; mobile: more visible) */
+.swipe-wrapper {
+  position: relative;
+}
+.swipe-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 48px;
+  height: 100%;
+  background: linear-gradient(to right, transparent, var(--surface-warm));
+  pointer-events: none;
+  border-radius: 0 12px 12px 0;
+  opacity: 0.8;
 }
 
 /* ── GALLERY — --surface-warm ── */
@@ -585,10 +603,17 @@ header {
   border: 1px solid var(--border);
   transition: transform 0.2s, box-shadow 0.2s;
   box-shadow: 0 2px 8px var(--shadow-soft);
+  cursor: pointer;           /* Preise → scrolls to Probetraining */
+  user-select: none;
 }
 .price-row:hover {
   transform: scale(1.02);
-  box-shadow: 0 6px 18px rgba(201,64,32,0.10);
+  box-shadow: 0 6px 18px rgba(201,64,32,0.12);
+}
+.price-row:active {
+  transform: scale(0.96);
+  transition: transform 0.1s ease;
+  box-shadow: 0 2px 6px var(--shadow-soft);
 }
 .price-row.highlight {
   border: 2px solid var(--accent);
@@ -1137,6 +1162,26 @@ footer .footer-copy {
 
   section { padding: 50px 16px; }
 
+  /* Swipe containers bleed to screen edges on mobile */
+  .swipe-container {
+    margin-left: -16px;
+    margin-right: -16px;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    padding: 14px 16px;
+  }
+  /* Inside stundenplan section the container is inside .container (24px padding),
+     compensate for that extra wrapper on wider viewports — not needed here since
+     section already has padding:50px 16px and .container has padding:0 24px */
+  #stundenplan .swipe-container {
+    margin-left: -40px;   /* compensate .container's 24px + section's 16px */
+    margin-right: -40px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .swipe-wrapper::after { display: none; } /* edge hint not needed when full-width */
+
   #hero { padding: 0 6%; }
 
   #stats-bar { flex-wrap: wrap; }
@@ -1164,13 +1209,20 @@ footer .footer-copy {
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     background: var(--surface-warm);
-    border: 1px solid var(--border);
-    border-radius: 12px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    border-radius: 0;
     margin-top: 28px;
+    /* Bleed to edges */
+    margin-left: -16px;
+    margin-right: -16px;
+    padding-left: 16px;
+    padding-right: 16px;
   }
   .video-swipe::-webkit-scrollbar { display: none; }
   .video-swipe .video-card {
-    min-width: 75vw;
+    /* Show ~85% of first card + peek of next card */
+    min-width: calc(85vw - 14px);
     flex-shrink: 0;
     scroll-snap-align: start;
   }

@@ -1,3 +1,5 @@
+const GH_IMG = 'https://raw.githubusercontent.com/kamillearn/414uda/main/images/';
+
 /* ── MOBILE MENU ── */
 (function () {
   const hamburger = document.getElementById('hamburger-btn');
@@ -58,9 +60,9 @@ document.addEventListener('keydown', function (e) {
 
 /* ── FLOATING CTA ── */
 (function () {
-  const cta       = document.getElementById('cta-float');
-  const closeBtn  = document.getElementById('cta-float-close');
-  let dismissed   = false;
+  const cta      = document.getElementById('cta-float');
+  const closeBtn = document.getElementById('cta-float-close');
+  let dismissed  = false;
 
   closeBtn.addEventListener('click', function () {
     dismissed = true;
@@ -69,8 +71,8 @@ document.addEventListener('keydown', function (e) {
 
   window.addEventListener('scroll', function () {
     if (dismissed) return;
-    const hero    = document.getElementById('hero');
-    const probe   = document.getElementById('probetraining');
+    const hero  = document.getElementById('hero');
+    const probe = document.getElementById('probetraining');
     if (!hero || !probe) return;
     const y = window.scrollY;
     if (y > 500 && y < probe.offsetTop - 400) {
@@ -110,10 +112,10 @@ document.addEventListener('keydown', function (e) {
 
   function show(idx) {
     current = (idx + items.length) % items.length;
-    const src = items[current].querySelector('img').src;
-    const alt = items[current].querySelector('img').alt;
-    lbImg.src = src;
-    lbImg.alt = alt;
+    const img = items[current].querySelector('img');
+    /* Use the full-res webp for lightbox (swap -thumb for full) */
+    lbImg.src = img.dataset.full || img.src;
+    lbImg.alt = img.alt;
     lb.classList.add('active');
     document.body.style.overflow = 'hidden';
   }
@@ -139,7 +141,7 @@ document.addEventListener('keydown', function (e) {
   document.addEventListener('keydown', function (e) {
     if (!lb.classList.contains('active')) return;
     if (e.key === 'Escape') hide();
-    if (e.key === 'ArrowLeft') show(current - 1);
+    if (e.key === 'ArrowLeft')  show(current - 1);
     if (e.key === 'ArrowRight') show(current + 1);
   });
 })();
@@ -148,7 +150,7 @@ document.addEventListener('keydown', function (e) {
 (function () {
   document.querySelectorAll('.faq-question').forEach(function (btn) {
     btn.addEventListener('click', function () {
-      const item = btn.closest('.faq-item');
+      const item   = btn.closest('.faq-item');
       const isOpen = item.classList.contains('open');
       document.querySelectorAll('.faq-item.open').forEach(function (o) { o.classList.remove('open'); });
       if (!isOpen) item.classList.add('open');
@@ -156,23 +158,39 @@ document.addEventListener('keydown', function (e) {
   });
 })();
 
+/* ── PRICE ROW → SCROLL TO PROBETRAINING ── */
+(function () {
+  const probeSection = document.getElementById('probetraining');
+  document.querySelectorAll('.price-row').forEach(function (row) {
+    row.addEventListener('click', function () {
+      if (probeSection) {
+        probeSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+    /* keyboard accessibility */
+    row.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        if (probeSection) probeSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+})();
+
 /* ── COOKIE / CONSENT BANNER ── */
 (function () {
   const CONSENT_KEY = '414uda_consent';
-  const banner = document.getElementById('cookie-banner');
+  const banner      = document.getElementById('cookie-banner');
 
   function getConsent() {
     try { return JSON.parse(localStorage.getItem(CONSENT_KEY)); } catch { return null; }
   }
   function setConsent(accepted) {
-    localStorage.setItem(CONSENT_KEY, JSON.stringify({ accepted: accepted, ts: Date.now() }));
+    localStorage.setItem(CONSENT_KEY, JSON.stringify({ accepted, ts: Date.now() }));
   }
-
   function applyConsent(accepted) {
     banner.classList.remove('show');
-    if (accepted) {
-      loadGoogleMaps();
-    }
+    if (accepted) loadGoogleMaps();
   }
 
   const consent = getConsent();
@@ -192,12 +210,8 @@ document.addEventListener('keydown', function (e) {
   });
 
   function loadGoogleMaps() {
-    document.querySelectorAll('.map-consent-placeholder').forEach(function (ph) {
-      ph.style.display = 'none';
-    });
-    document.querySelectorAll('.map-real-iframe').forEach(function (iframe) {
-      iframe.classList.add('loaded');
-    });
+    document.querySelectorAll('.map-consent-placeholder').forEach(ph => ph.style.display = 'none');
+    document.querySelectorAll('.map-real-iframe').forEach(iframe => iframe.classList.add('loaded'));
   }
 })();
 
@@ -209,16 +223,10 @@ document.addEventListener('keydown', function (e) {
 
   form.addEventListener('submit', async function (e) {
     e.preventDefault();
-
-    /* honeypot check */
-    if (form.querySelector('[name=_gotcha]').value) return;
+    if (form.querySelector('[name=_gotcha]').value) return; /* honeypot */
 
     const data = new FormData(form);
-    const res = await fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      body: data
-    });
-
+    const res  = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data });
     if (res.ok) {
       form.style.display = 'none';
       success.classList.add('active');
@@ -228,10 +236,65 @@ document.addEventListener('keydown', function (e) {
   });
 })();
 
-/* ── HERO PARALLAX (JS, iOS-safe) ── */
+/* ── SWIPE HINT ANIMATION ── */
 (function () {
-  const heroBg = document.querySelector('#hero::before');
-  /* We handle this purely in CSS with a pseudo-element – no JS needed.
-     The pseudo-element with inset:-10% gives a subtle depth without
-     background-attachment:fixed which breaks on iOS Safari. */
+  /* Only run on genuine touch/mobile devices */
+  const isMobile = () => window.innerWidth <= 768;
+
+  /**
+   * Runs a gentle "peek right → come back" animation on a scroll container.
+   * Permanently stops the moment the user touches or scrolls it.
+   */
+  function attachSwipeHint(container) {
+    if (!container) return;
+
+    let active = true;
+    let loopTimer;
+
+    function stop() {
+      active = false;
+      clearTimeout(loopTimer);
+      container.removeEventListener('touchstart', stop);
+      container.removeEventListener('scroll',     stop);
+      container.removeEventListener('pointerdown', stop);
+    }
+
+    container.addEventListener('touchstart',  stop, { once: true, passive: true });
+    container.addEventListener('scroll',      stop, { once: true, passive: true });
+    container.addEventListener('pointerdown', stop, { once: true, passive: true });
+
+    function peek() {
+      if (!active || !isMobile()) return;
+      /* Only hint if there is actually overflow to reveal */
+      const hasOverflow = container.scrollWidth > container.clientWidth + 4;
+      if (!hasOverflow) { loopTimer = setTimeout(peek, 5000); return; }
+
+      const peekPx  = 48;
+      const durMs   = 650;
+      const start   = performance.now();
+
+      function frame(now) {
+        if (!active) return;
+        const t      = Math.min((now - start) / durMs, 1);
+        /* sine arc: goes right then returns to 0 smoothly */
+        container.scrollLeft = Math.sin(t * Math.PI) * peekPx;
+        if (t < 1) {
+          requestAnimationFrame(frame);
+        } else {
+          container.scrollLeft = 0;
+          if (active) loopTimer = setTimeout(peek, 5000);
+        }
+      }
+      requestAnimationFrame(frame);
+    }
+
+    /* First peek after 1.8 s so the page has settled */
+    loopTimer = setTimeout(peek, 1800);
+  }
+
+  /* Schedule section swipe containers */
+  document.querySelectorAll('.swipe-container').forEach(attachSwipeHint);
+
+  /* Video swipe carousel */
+  attachSwipeHint(document.querySelector('.video-swipe'));
 })();
