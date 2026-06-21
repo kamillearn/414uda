@@ -439,61 +439,56 @@
     <div class="video-grid">
       <div class="video-card reveal">
         <div class="video-embed">
-          <!-- TODO: set src="/videos/testimonial-1.mp4" and poster once files are added -->
-          <video controls playsinline preload="none" aria-label="Testimonial – Wie bist du zu 414 gekommen?">
-            <source src="" type="video/mp4">
-            Dein Browser unterstützt kein HTML5-Video.
-          </video>
+          <iframe src="https://drive.google.com/file/d/1ZmFLczfUawQ2RqsYOjBcnSUQzGJabZUl/preview"
+            allow="autoplay" allowfullscreen loading="lazy"
+            title="Testimonial – Wie bist du zu 414 gekommen?"></iframe>
         </div>
         <div class="video-card-label">„Wie bist du zu 414 gekommen?"</div>
       </div>
 
       <div class="video-card reveal">
         <div class="video-embed">
-          <!-- TODO: set src="/videos/testimonial-2.mp4" -->
-          <video controls playsinline preload="none" aria-label="Testimonial – Was gefällt dir am meisten?">
-            <source src="" type="video/mp4">
-            Dein Browser unterstützt kein HTML5-Video.
-          </video>
+          <iframe src="https://drive.google.com/file/d/1ZmFLczfUawQ2RqsYOjBcnSUQzGJabZUl/preview"
+            allow="autoplay" allowfullscreen loading="lazy"
+            title="Testimonial – Was gefällt dir am meisten?"></iframe>
         </div>
         <div class="video-card-label">„Was gefällt dir am meisten?"</div>
       </div>
 
       <div class="video-card reveal">
         <div class="video-embed">
-          <!-- TODO: set src="/videos/testimonial-3.mp4" -->
-          <video controls playsinline preload="none" aria-label="Testimonial – Warum bleibst du hier?">
-            <source src="" type="video/mp4">
-            Dein Browser unterstützt kein HTML5-Video.
-          </video>
+          <iframe src="https://drive.google.com/file/d/1ZmFLczfUawQ2RqsYOjBcnSUQzGJabZUl/preview"
+            allow="autoplay" allowfullscreen loading="lazy"
+            title="Testimonial – Warum bleibst du hier?"></iframe>
         </div>
         <div class="video-card-label">„Warum bleibst du hier?"</div>
       </div>
+    </div>
+
+    <div style="text-align:center;margin-top:28px;">
+      <button id="more-videos-btn" class="btn-more-videos">Mehr Videos ansehen</button>
     </div>
 
     <!-- Mobile swipe carousel (same videos, duplicated for layout) -->
     <div class="video-swipe" role="region" aria-label="Testimonial Videos – horizontal scrollbar">
       <div class="video-card">
         <div class="video-embed">
-          <video controls playsinline preload="none" aria-label="Testimonial 1">
-            <source src="" type="video/mp4">
-          </video>
+          <iframe src="https://drive.google.com/file/d/1ZmFLczfUawQ2RqsYOjBcnSUQzGJabZUl/preview"
+            allow="autoplay" allowfullscreen loading="lazy" title="Testimonial 1"></iframe>
         </div>
         <div class="video-card-label">„Wie bist du zu 414 gekommen?"</div>
       </div>
       <div class="video-card">
         <div class="video-embed">
-          <video controls playsinline preload="none" aria-label="Testimonial 2">
-            <source src="" type="video/mp4">
-          </video>
+          <iframe src="https://drive.google.com/file/d/1ZmFLczfUawQ2RqsYOjBcnSUQzGJabZUl/preview"
+            allow="autoplay" allowfullscreen loading="lazy" title="Testimonial 2"></iframe>
         </div>
         <div class="video-card-label">„Was gefällt dir am meisten?"</div>
       </div>
       <div class="video-card">
         <div class="video-embed">
-          <video controls playsinline preload="none" aria-label="Testimonial 3">
-            <source src="" type="video/mp4">
-          </video>
+          <iframe src="https://drive.google.com/file/d/1ZmFLczfUawQ2RqsYOjBcnSUQzGJabZUl/preview"
+            allow="autoplay" allowfullscreen loading="lazy" title="Testimonial 3"></iframe>
         </div>
         <div class="video-card-label">„Warum bleibst du hier?"</div>
       </div>
@@ -952,6 +947,52 @@
   <div id="cta-float" aria-hidden="true">
     <a href="#probetraining" tabindex="-1">Jetzt Probetraining sichern</a>
     <button id="cta-float-close" aria-label="Banner schließen" tabindex="-1">×</button>
+  </div>
+
+  <!-- ── VIDEO GALLERY MODAL ── -->
+  <div id="video-grid-modal" class="video-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="video-modal-title">
+    <div class="video-modal-content">
+      <button class="close-grid-btn" aria-label="Galerie schließen">&times;</button>
+      <h3 id="video-modal-title">Community Video Galerie</h3>
+      <div class="video-grid-container">
+        <div class="grid-video-item">
+          <iframe src="https://drive.google.com/file/d/1ZmFLczfUawQ2RqsYOjBcnSUQzGJabZUl/preview"
+            allow="autoplay" allowfullscreen loading="lazy" title="Community Video 1"></iframe>
+        </div>
+        <div class="grid-video-item">
+          <iframe src="https://drive.google.com/file/d/1ZmFLczfUawQ2RqsYOjBcnSUQzGJabZUl/preview"
+            allow="autoplay" allowfullscreen loading="lazy" title="Community Video 2"></iframe>
+        </div>
+        <div class="grid-video-item">
+          <iframe src="https://drive.google.com/file/d/1ZmFLczfUawQ2RqsYOjBcnSUQzGJabZUl/preview"
+            allow="autoplay" allowfullscreen loading="lazy" title="Community Video 3"></iframe>
+        </div>
+        <div class="grid-video-item">
+          <iframe src="https://drive.google.com/file/d/1ZmFLczfUawQ2RqsYOjBcnSUQzGJabZUl/preview"
+            allow="autoplay" allowfullscreen loading="lazy" title="Community Video 4"></iframe>
+        </div>
+        <div class="grid-video-item">
+          <iframe src="https://drive.google.com/file/d/1ZmFLczfUawQ2RqsYOjBcnSUQzGJabZUl/preview"
+            allow="autoplay" allowfullscreen loading="lazy" title="Community Video 5"></iframe>
+        </div>
+        <div class="grid-video-item">
+          <iframe src="https://drive.google.com/file/d/1ZmFLczfUawQ2RqsYOjBcnSUQzGJabZUl/preview"
+            allow="autoplay" allowfullscreen loading="lazy" title="Community Video 6"></iframe>
+        </div>
+        <div class="grid-video-item">
+          <iframe src="https://drive.google.com/file/d/1ZmFLczfUawQ2RqsYOjBcnSUQzGJabZUl/preview"
+            allow="autoplay" allowfullscreen loading="lazy" title="Community Video 7"></iframe>
+        </div>
+        <div class="grid-video-item">
+          <iframe src="https://drive.google.com/file/d/1ZmFLczfUawQ2RqsYOjBcnSUQzGJabZUl/preview"
+            allow="autoplay" allowfullscreen loading="lazy" title="Community Video 8"></iframe>
+        </div>
+        <div class="grid-video-item">
+          <iframe src="https://drive.google.com/file/d/1ZmFLczfUawQ2RqsYOjBcnSUQzGJabZUl/preview"
+            allow="autoplay" allowfullscreen loading="lazy" title="Community Video 9"></iframe>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script>

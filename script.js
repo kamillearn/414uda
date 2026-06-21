@@ -238,15 +238,13 @@ document.addEventListener('keydown', function (e) {
 
 /* ── SWIPE HINT ANIMATION ── */
 (function () {
-  /* Only run on genuine touch/mobile devices */
   const isMobile = () => window.innerWidth <= 768;
 
-  /**
-   * Runs a gentle "peek right → come back" animation on a scroll container.
-   * Permanently stops the moment the user touches or scrolls it.
-   */
   function attachSwipeHint(container) {
     if (!container) return;
+
+    /* Add CSS scroll-hint class so the animation plays on load */
+    container.classList.add('scroll-hint');
 
     let active = true;
     let loopTimer;
@@ -254,8 +252,10 @@ document.addEventListener('keydown', function (e) {
     function stop() {
       active = false;
       clearTimeout(loopTimer);
-      container.removeEventListener('touchstart', stop);
-      container.removeEventListener('scroll',     stop);
+      /* Remove CSS hint class permanently once user interacts */
+      container.classList.remove('scroll-hint');
+      container.removeEventListener('touchstart',  stop);
+      container.removeEventListener('scroll',      stop);
       container.removeEventListener('pointerdown', stop);
     }
 
@@ -265,18 +265,16 @@ document.addEventListener('keydown', function (e) {
 
     function peek() {
       if (!active || !isMobile()) return;
-      /* Only hint if there is actually overflow to reveal */
       const hasOverflow = container.scrollWidth > container.clientWidth + 4;
       if (!hasOverflow) { loopTimer = setTimeout(peek, 5000); return; }
 
-      const peekPx  = 48;
-      const durMs   = 650;
-      const start   = performance.now();
+      const peekPx = 48;
+      const durMs  = 650;
+      const start  = performance.now();
 
       function frame(now) {
         if (!active) return;
-        const t      = Math.min((now - start) / durMs, 1);
-        /* sine arc: goes right then returns to 0 smoothly */
+        const t = Math.min((now - start) / durMs, 1);
         container.scrollLeft = Math.sin(t * Math.PI) * peekPx;
         if (t < 1) {
           requestAnimationFrame(frame);
@@ -288,13 +286,58 @@ document.addEventListener('keydown', function (e) {
       requestAnimationFrame(frame);
     }
 
-    /* First peek after 1.8 s so the page has settled */
     loopTimer = setTimeout(peek, 1800);
   }
 
-  /* Schedule section swipe containers */
   document.querySelectorAll('.swipe-container').forEach(attachSwipeHint);
-
-  /* Video swipe carousel */
   attachSwipeHint(document.querySelector('.video-swipe'));
+})();
+
+/* ── TAP-TO-SLIDE (center tapped card in swipe containers) ── */
+(function () {
+  document.querySelectorAll('.swipe-container').forEach(function (container) {
+    container.querySelectorAll('.schedule-day').forEach(function (card) {
+      card.addEventListener('click', function () {
+        card.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      });
+    });
+  });
+
+  const videoSwipe = document.querySelector('.video-swipe');
+  if (videoSwipe) {
+    videoSwipe.querySelectorAll('.video-card').forEach(function (card) {
+      card.addEventListener('click', function () {
+        card.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      });
+    });
+  }
+})();
+
+/* ── VIDEO GALLERY MODAL ── */
+(function () {
+  const modal    = document.getElementById('video-grid-modal');
+  const openBtn  = document.getElementById('more-videos-btn');
+  const closeBtn = modal && modal.querySelector('.close-grid-btn');
+
+  if (!modal || !openBtn) return;
+
+  function openVideoModal() {
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeVideoModal() {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  openBtn.addEventListener('click', openVideoModal);
+  closeBtn.addEventListener('click', closeVideoModal);
+
+  modal.addEventListener('click', function (e) {
+    if (e.target === modal) closeVideoModal();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modal.classList.contains('active')) closeVideoModal();
+  });
 })();
